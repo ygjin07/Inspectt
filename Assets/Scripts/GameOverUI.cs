@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class GameOverUI : MonoBehaviour
 {
@@ -19,9 +20,11 @@ public class GameOverUI : MonoBehaviour
     ScoreBoard scoreboard = new ScoreBoard();
 
     [SerializeField]
-    AudioSource inGameBGM;
+    AudioSource BGM;
     [SerializeField]
-    AudioSource gameOverBGM;
+    AudioClip gameOverBGM;
+    [SerializeField]
+    AudioClip inGameBGM;
 
     // Start is called before the first frame update
     void Start()
@@ -37,9 +40,10 @@ public class GameOverUI : MonoBehaviour
 
     public void ActiveGameOverPanel()
     {
-        gameOverBGM.time =0f;
-        inGameBGM.Stop();
-        gameOverBGM.Play();
+        BGM.time =0f;
+        BGM.clip = gameOverBGM;
+        BGM.Play();
+
 
         gameOverPanel.SetActive(true);
     }
@@ -53,11 +57,11 @@ public class GameOverUI : MonoBehaviour
     public void RetryBtn()
     {
         scoreboard.SaveScore(final_socre, name_input.text);
-        
-        inGameBGM.time =0f;
-        gameOverBGM.Stop();
-        inGameBGM.Play();
-        
+
+        BGM.time = 0f;
+        BGM.clip = inGameBGM;
+        BGM.Play();
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

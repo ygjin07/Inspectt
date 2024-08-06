@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI scoreText;
     [SerializeField]
-    TextMeshProUGUI lifeText;
+    //TextMeshProUGUI lifeText;
     
     public float maxTime;
     public float currentTime;
@@ -52,7 +52,7 @@ public class UIManager : MonoBehaviour
         timeSlider.value = currentTime/maxTime; //타이머 바
         timeText.text = textTime + "s"; //타이머 텍스트
         scoreText.text = "Score: " + inputController.score;
-        lifeText.text = "Life: " + inputController.life;
+        //lifeText.text = "Life: " + inputController.life;
     }
 
     public void UnActiveHeart(int idx)
