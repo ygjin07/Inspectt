@@ -4,6 +4,7 @@ using UnityEngine;
 using System.IO;
 using Unity.VisualScripting;
 
+[System.Serializable]
 public class DataList
 {
     public List<Data> datas;
@@ -14,6 +15,7 @@ public class DataList
     }
 }
 
+[System.Serializable]
 public class Data
 {
     public int score;
