@@ -8,6 +8,8 @@ public class InputController : MonoBehaviour
     [SerializeField]
     NPCController npc_controller;
     [SerializeField]
+    UIManager uIManager;
+    [SerializeField]
     GameOverUI gameOverUI;
     [SerializeField]
     GameObject InitPanel;
@@ -40,8 +42,8 @@ public class InputController : MonoBehaviour
         ShuffleArray(key_set);
         for (int i = 0; i < keyObjs.Count; i++)
         {
-            keyObjs[i].GetComponent<SpriteRenderer>().color = npc_color[(int)key_set[i]];
-            init_checks[i + 1].GetComponent<Image>().color = npc_color[(int)key_set[i]];
+            keyObjs[i].GetComponent<Animator>().runtimeAnimatorController = npc_controller.NPCAnimatorController[(int)key_set[i]];
+            init_checks[i + 1].GetComponent<Image>().sprite = npc_controller.NPCImages[(int)key_set[i]];
         }
         StartCoroutine(InitPanelCorutine());
     }
@@ -161,6 +163,7 @@ public class InputController : MonoBehaviour
     {
         life--;
         limit_time -= 0.1f;
+        uIManager.UnActiveHeart(life);
         if(life <= 0)
         {
             GameOver();

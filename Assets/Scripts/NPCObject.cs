@@ -7,11 +7,12 @@ public class NPCObject : MonoBehaviour
     float Speed = 20f;
     float destroy_ypos = -4.9f;
     float init_ypos = 7f;
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -23,6 +24,8 @@ public class NPCObject : MonoBehaviour
     public IEnumerator Move()
     {
         float move_target = transform.position.y - 2;
+
+        animator.SetBool("walk", true);
         while(transform.position.y > move_target)
         {
             transform.position += Vector3.down * Speed * Time.deltaTime;
@@ -36,5 +39,6 @@ public class NPCObject : MonoBehaviour
         }
 
         transform.position = new Vector3(transform.position.x, move_target, transform.position.z);
+        animator.SetBool("walk", false);
     }
 }

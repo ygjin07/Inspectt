@@ -24,9 +24,15 @@ public class UIManager : MonoBehaviour
     public float currentTime;
     public float textTime;
 
+
+    [SerializeField]
+    GameObject Life;
+
+    public Image[] hearts;
+
     void Awake()
     {
-        
+        hearts = Life.GetComponentsInChildren<Image>();
         maxTime = inputController.limit_time;
         currentTime = inputController.time;
     }
@@ -47,5 +53,10 @@ public class UIManager : MonoBehaviour
         timeText.text = textTime + "s"; //타이머 텍스트
         scoreText.text = "Score: " + inputController.score;
         lifeText.text = "Life: " + inputController.life;
+    }
+
+    public void UnActiveHeart(int idx)
+    {
+        hearts[idx].gameObject.SetActive(false);
     }
 }

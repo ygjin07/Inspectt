@@ -45,6 +45,9 @@ public class NPCController : MonoBehaviour
     int last_npc_idx = 20;
 
     Color[] npc_color = { Color.red, Color.blue, Color.yellow, Color.green, Color.white, Color.black };
+    
+    public List<Sprite> NPCImages;
+    public List<RuntimeAnimatorController> NPCAnimatorController;
 
     // Start is called before the first frame update
     void Start()
@@ -71,7 +74,8 @@ public class NPCController : MonoBehaviour
         for(int i = 0; i<NPCObjs.Length - 4; i++)
         {
             NPCType[] type = npc_set[i / 4].GetNPCs();
-            NPCObjs[i].GetComponent<SpriteRenderer>().color = npc_color[(int)type[i % 4]];
+            NPCObjs[i].GetComponent<SpriteRenderer>().sprite = NPCImages[(int)type[i % 4]];
+            NPCObjs[i].GetComponent<Animator>().runtimeAnimatorController = NPCAnimatorController[(int)type[i % 4]];
         }
     }
 
@@ -83,7 +87,8 @@ public class NPCController : MonoBehaviour
 
         for(int i = 0;i < 4;i++)
         {
-            NPCObjs[last_npc_idx + i].GetComponent<SpriteRenderer>().color = npc_color[(int)type[i % 4]];
+            NPCObjs[last_npc_idx + i].GetComponent<SpriteRenderer>().sprite = NPCImages[(int)type[i % 4]];
+            NPCObjs[last_npc_idx + i].GetComponent<Animator>().runtimeAnimatorController = NPCAnimatorController[(int)type[i % 4]];
         }
 
         last_npc_idx += 4;
