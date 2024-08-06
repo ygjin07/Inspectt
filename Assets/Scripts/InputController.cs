@@ -18,6 +18,9 @@ public class InputController : MonoBehaviour
     //아ㅠ에서부터 순서대로 S, F, J, L, Space, Space
     NPCType[] key_set = (NPCType[])System.Enum.GetValues(typeof(NPCType));
 
+    [SerializeField]
+    List<GameObject> keyObjs;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +35,8 @@ public class InputController : MonoBehaviour
         time -= Time.deltaTime;
         if(time < 0) 
         {
-            
+            InputFail();
+            NextLine();
         }
 
         if(Input.GetKeyDown(KeyCode.S)) 
