@@ -3118,7 +3118,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1958860092}
         m_TargetAssemblyTypeName: GameOverUI, Assembly-CSharp
         m_MethodName: NextBtn
         m_Mode: 1
