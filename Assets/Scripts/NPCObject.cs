@@ -17,10 +17,7 @@ public class NPCObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.M))
-        {
-            StartCoroutine(Move());
-        }
+
     }
 
     public IEnumerator Move()
