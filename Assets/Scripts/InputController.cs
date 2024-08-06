@@ -8,12 +8,12 @@ public class InputController : MonoBehaviour
     NPCController npc_controller;
 
     List<int> input_set = new List<int>();
-    int score = 0;
+    public int score = 0;
     [SerializeField]
-    int life = 4;
+    public int life = 4;
     [SerializeField]
-    float limit_time = 3.5f;
-    float time;
+    public float limit_time = 3.5f;
+    public float time;
 
     //아ㅠ에서부터 순서대로 S, F, J, L, Space, Space
     NPCType[] key_set = (NPCType[])System.Enum.GetValues(typeof(NPCType));
