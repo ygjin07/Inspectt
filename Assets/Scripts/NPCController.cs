@@ -42,7 +42,7 @@ public class NPCController : MonoBehaviour
     GameObject NPCsGameObject;
     NPCObject[] NPCObjs;
 
-    int last_npc_idx = 0;
+    int last_npc_idx = 20;
 
     Color[] npc_color = { Color.red, Color.blue, Color.yellow, Color.green, Color.white, Color.black };
 
@@ -67,9 +67,8 @@ public class NPCController : MonoBehaviour
         npc_set.Add(new NPCLine());
         npc_set.Add(new NPCLine());
         npc_set.Add(new NPCLine());
-        npc_set.Add(new NPCLine());
 
-        for(int i = 0; i<NPCObjs.Length; i++)
+        for(int i = 0; i<NPCObjs.Length - 4; i++)
         {
             NPCType[] type = npc_set[i / 4].GetNPCs();
             NPCObjs[i].GetComponent<SpriteRenderer>().color = npc_color[(int)type[i % 4]];
