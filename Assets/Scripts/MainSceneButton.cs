@@ -10,6 +10,7 @@ public class MainSceneButton : MonoBehaviour
     [SerializeField]
     GameObject scorePanel;
 
+    //스코어보드 Text들
     [SerializeField]
     GameObject nameGroup;
     TextMeshProUGUI[] names;
@@ -21,6 +22,9 @@ public class MainSceneButton : MonoBehaviour
     [SerializeField]
     GameObject rankGroup;
     TextMeshProUGUI[] ranks;
+
+    [SerializeField]
+    TextMeshProUGUI noRank;
 
     ScoreBoard scoreBoard = new ScoreBoard();
     DataList dataList = new DataList();
@@ -76,28 +80,35 @@ public class MainSceneButton : MonoBehaviour
     {
         dataList = scoreBoard.LoadScore();
 
-        for(int i =0; i<dataList.datas.Count; i++)
-        {
-            Debug.Log(dataList.datas[i].name);
-        }
-        Debug.Log(names.Length);
-        Debug.Log(scores.Length);
+        // for(int i =0; i<dataList.datas.Count; i++)
+        // {
+        //     Debug.Log(dataList.datas[i].name);
+        // }
+        // Debug.Log(names.Length);
+        // Debug.Log(scores.Length);
 
         //저장된 기록이 10개가 넘으면 for문을 10번까지, 그렇지 않으면 기록 수만큼 for문 반복
         int maxIndex;
 
         if(dataList.datas.Count<10)
         {
+            noRank.enabled=false;
             maxIndex = dataList.datas.Count;
-            for(int i =9; i> dataList.datas.Count; i--)
+            for(int i =9; i> dataList.datas.Count-1; i--)
             {
                 names[i].enabled = false;
                 scores[i].enabled = false;
                 ranks[i].enabled = false;
+
+                if(dataList.datas.Count<1)
+                {
+                    noRank.enabled=true;
+                }
             }
         }
         else
         {
+            noRank.enabled=false;
             maxIndex = 10;
         }
 
