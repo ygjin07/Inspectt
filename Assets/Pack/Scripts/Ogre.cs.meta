@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: fcda776cf0b10834fbc56b1b2d4c029e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 23247
+  packageName: 2D Characters pixel art pack
+  packageVersion: v1
+  assetPath: Assets/Pack/Scripts/Ogre.cs
+  uploadId: 29740

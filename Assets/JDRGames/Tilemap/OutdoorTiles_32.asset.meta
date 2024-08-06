@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d4dfabf537e8c3c48a51eeb47dda7ffc
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 201899
+  packageName: 2D Pixel Art Outdoor Tileset
+  packageVersion: 1.0
+  assetPath: Assets/JDRGames/Tilemap/OutdoorTiles_32.asset
+  uploadId: 449875
