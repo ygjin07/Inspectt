@@ -142,7 +142,7 @@ public class InputController : MonoBehaviour
         limit_time -= 0.1f;
         if(life < 0)
         {
-            Debug.Log("GAMEOVER");
+            GameOver();
         }
     }
 
@@ -150,5 +150,10 @@ public class InputController : MonoBehaviour
     {
         score++;
         limit_time -= 0.1f;
+    }
+
+    void GameOver()
+    {
+        Time.timeScale = 0;
     }
 }
