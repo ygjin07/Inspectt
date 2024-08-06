@@ -6,14 +6,18 @@ public class InputController : MonoBehaviour
 {
     [SerializeField]
     NPCController npc_controller;
+    [SerializeField]
+    GameOverUI gameOverUI;
 
     List<int> input_set = new List<int>();
     public int score = 0;
     [SerializeField]
-    public int life = 4;
+    public int life = 5;
     [SerializeField]
-    public float limit_time = 3.5f;
+    public float limit_time = 8f;
     public float time;
+
+    bool isgameover = false;
 
     //아ㅠ에서부터 순서대로 S, F, J, L, Space, Space
     NPCType[] key_set = (NPCType[])System.Enum.GetValues(typeof(NPCType));
@@ -38,32 +42,35 @@ public class InputController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time -= Time.deltaTime;
-        if(time < 0) 
+        if (!isgameover)
         {
-            InputFail();
-            NextLine();
-        }
+            time -= Time.deltaTime;
+            if (time < 0)
+            {
+                InputFail();
+                NextLine();
+            }
 
-        if(Input.GetKeyDown(KeyCode.S)) 
-        {
-            KeyInput(0);
-        }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            KeyInput(1);
-        }
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            KeyInput(2);
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            KeyInput(3);
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            KeyInput(4);
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                KeyInput(0);
+            }
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                KeyInput(1);
+            }
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                KeyInput(2);
+            }
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                KeyInput(3);
+            }
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                KeyInput(4);
+            }
         }
     }
 
@@ -140,7 +147,7 @@ public class InputController : MonoBehaviour
     {
         life--;
         limit_time -= 0.1f;
-        if(life < 0)
+        if(life <= 0)
         {
             GameOver();
         }
@@ -154,6 +161,8 @@ public class InputController : MonoBehaviour
 
     void GameOver()
     {
-        Time.timeScale = 0;
+        isgameover = true;
+        gameOverUI.ActiveGameOverPanel();
+        gameOverUI.SetFinalScore(score);
     }
 }
