@@ -39,7 +39,7 @@ public class ScoreBoard
         Data data = new Data(score, name);
         datas.datas.Add(data);
 
-        datas.datas.Sort((a,b)=>a.score.CompareTo(b.score));
+        datas.datas.Sort((b,a)=>a.score.CompareTo(b.score));
         Debug.Log(JsonUtility.ToJson(datas));
 
         File.WriteAllText(Application.dataPath + "/TestJson.json", JsonUtility.ToJson(datas));
