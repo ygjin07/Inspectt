@@ -41,17 +41,23 @@ public class NPCController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        npc_set.Add(new NPCLine());
-        npc_set.Add(new NPCLine());
-        npc_set.Add(new NPCLine());
-        npc_set.Add(new NPCLine());
-        npc_set.Add(new NPCLine());
+        Init();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void Init()
+    {
+        npc_set.Add(new NPCLine());
+        npc_set.Add(new NPCLine());
+        npc_set.Add(new NPCLine());
+        npc_set.Add(new NPCLine());
+        npc_set.Add(new NPCLine());
+        npc_set.Add(new NPCLine());
     }
 
     public void AddLine()
