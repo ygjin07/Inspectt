@@ -2384,6 +2384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 828687ba9bc534349ababd774a3b744e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NPCsGameObject: {fileID: 75625840}
 --- !u!4 &1419402871
 Transform:
   m_ObjectHideFlags: 0
@@ -2416,7 +2417,11 @@ MonoBehaviour:
   life: 4
   limit_time: 3.5
   time: 0
-  keyObjs: []
+  keyObjs:
+  - {fileID: 1707061248}
+  - {fileID: 523362409}
+  - {fileID: 1891998719}
+  - {fileID: 1048257584}
 --- !u!1 &1455697099
 GameObject:
   m_ObjectHideFlags: 0

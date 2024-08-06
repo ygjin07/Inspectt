@@ -21,12 +21,18 @@ public class InputController : MonoBehaviour
     [SerializeField]
     List<GameObject> keyObjs;
 
+    Color[] npc_color = { Color.red, Color.blue, Color.yellow, Color.green, Color.white, Color.black };
+
     // Start is called before the first frame update
     void Start()
     {
         time = limit_time;
         ShuffleArray(key_set);
         Debug.Log("key_set : " + string.Join(", ", key_set));
+        for (int i = 0; i < keyObjs.Count; i++)
+        {
+            keyObjs[i].GetComponent<SpriteRenderer>().color = npc_color[(int)key_set[i]];
+        }
     }
 
     // Update is called once per frame
@@ -79,14 +85,14 @@ public class InputController : MonoBehaviour
             Debug.Log("Score : " + score + ", Life : " + life);
 
             NextLine();
-
-            input_set.Clear();
         }
     }
 
     void NextLine()
     {
         time = limit_time;
+        input_set.Clear();
+        npc_controller.NPCsMove();
         npc_controller.RemoveLine();
         npc_controller.AddLine();
     }

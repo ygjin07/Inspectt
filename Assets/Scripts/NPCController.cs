@@ -38,6 +38,14 @@ public class NPCController : MonoBehaviour
 {
     List<NPCLine> npc_set = new List<NPCLine>();
 
+    [SerializeField]
+    GameObject NPCsGameObject;
+    NPCObject[] NPCObjs;
+
+    int last_npc_idx = 0;
+
+    Color[] npc_color = { Color.red, Color.blue, Color.yellow, Color.green, Color.white, Color.black };
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,17 +60,35 @@ public class NPCController : MonoBehaviour
 
     void Init()
     {
+        NPCObjs = NPCsGameObject.GetComponentsInChildren<NPCObject>();
+
         npc_set.Add(new NPCLine());
         npc_set.Add(new NPCLine());
         npc_set.Add(new NPCLine());
         npc_set.Add(new NPCLine());
         npc_set.Add(new NPCLine());
         npc_set.Add(new NPCLine());
+
+        for(int i = 0; i<NPCObjs.Length; i++)
+        {
+            NPCType[] type = npc_set[i / 4].GetNPCs();
+            NPCObjs[i].GetComponent<SpriteRenderer>().color = npc_color[(int)type[i % 4]];
+        }
     }
 
     public void AddLine()
     {
         npc_set.Add(new NPCLine());
+
+        NPCType[] type = npc_set[npc_set.Count - 1].GetNPCs();
+
+        for(int i = 0;i < 4;i++)
+        {
+            NPCObjs[last_npc_idx + i].GetComponent<SpriteRenderer>().color = npc_color[(int)type[i % 4]];
+        }
+
+        last_npc_idx += 4;
+        last_npc_idx %= 24;
     }
 
     public void RemoveLine() 
@@ -73,5 +99,13 @@ public class NPCController : MonoBehaviour
     public List<NPCLine> GetNpcSet()
     {
         return npc_set;
+    }
+
+    public void NPCsMove()
+    {
+        foreach(NPCObject npc in NPCObjs)
+        {
+            StartCoroutine(npc.Move());
+        }
     }
 }
