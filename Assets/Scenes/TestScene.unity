@@ -4174,8 +4174,8 @@ MonoBehaviour:
   npc_controller: {fileID: 1419402870}
   gameOverUI: {fileID: 227741509}
   score: 0
-  life: 4
-  limit_time: 3.5
+  life: 5
+  limit_time: 8.5
   time: 0
   keyObjs:
   - {fileID: 1707061248}
@@ -4353,7 +4353,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -4384,7 +4384,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -277.651, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
