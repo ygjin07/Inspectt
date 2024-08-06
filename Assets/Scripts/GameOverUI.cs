@@ -18,6 +18,11 @@ public class GameOverUI : MonoBehaviour
 
     ScoreBoard scoreboard = new ScoreBoard();
 
+    [SerializeField]
+    AudioSource inGameBGM;
+    [SerializeField]
+    AudioSource gameOverBGM;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +37,10 @@ public class GameOverUI : MonoBehaviour
 
     public void ActiveGameOverPanel()
     {
+        gameOverBGM.time =0f;
+        inGameBGM.Stop();
+        gameOverBGM.Play();
+
         gameOverPanel.SetActive(true);
     }
 
@@ -44,6 +53,11 @@ public class GameOverUI : MonoBehaviour
     public void RetryBtn()
     {
         scoreboard.SaveScore(final_socre, name_input.text);
+        
+        inGameBGM.time =0f;
+        gameOverBGM.Stop();
+        inGameBGM.Play();
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

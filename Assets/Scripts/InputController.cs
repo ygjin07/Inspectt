@@ -16,6 +16,10 @@ public class InputController : MonoBehaviour
 
     Image[] init_checks;
 
+    [SerializeField]
+    AudioSource lineClearSound;
+    
+
     List<int> input_set = new List<int>();
     public int score = 0;
     [SerializeField]
@@ -26,7 +30,7 @@ public class InputController : MonoBehaviour
 
     bool isgameover = true;
 
-    //¾Æ¤Ð¿¡¼­ºÎÅÍ ¼ø¼­´ë·Î S, F, J, L, Space, Space
+    //ï¿½Æ¤Ð¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ S, F, J, L, Space, Space
     NPCType[] key_set = (NPCType[])System.Enum.GetValues(typeof(NPCType));
 
     [SerializeField]
@@ -98,6 +102,7 @@ public class InputController : MonoBehaviour
         {
             if(CompareLine())
             {
+                lineClearSound.Play();
                 InputSuccess();
             }
             else
@@ -129,7 +134,7 @@ public class InputController : MonoBehaviour
         {
             if (input_set[i] == 4)
             {
-                //Space Å° ºñ±³
+                //Space Å° ï¿½ï¿½
                 if (first_line[i] != key_set[4] && first_line[i] != key_set[5])
                 {
                     return false;
