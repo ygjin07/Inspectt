@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InputController : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class InputController : MonoBehaviour
     NPCController npc_controller;
     [SerializeField]
     GameOverUI gameOverUI;
+    [SerializeField]
+    GameObject InitPanel;
+
+    Image[] init_checks;
 
     List<int> input_set = new List<int>();
     public int score = 0;
@@ -17,7 +22,7 @@ public class InputController : MonoBehaviour
     public float limit_time = 8f;
     public float time;
 
-    bool isgameover = false;
+    bool isgameover = true;
 
     //아ㅠ에서부터 순서대로 S, F, J, L, Space, Space
     NPCType[] key_set = (NPCType[])System.Enum.GetValues(typeof(NPCType));
@@ -31,12 +36,14 @@ public class InputController : MonoBehaviour
     void Start()
     {
         time = limit_time;
+        init_checks = InitPanel.GetComponentsInChildren<Image>();
         ShuffleArray(key_set);
-        Debug.Log("key_set : " + string.Join(", ", key_set));
         for (int i = 0; i < keyObjs.Count; i++)
         {
             keyObjs[i].GetComponent<SpriteRenderer>().color = npc_color[(int)key_set[i]];
+            init_checks[i + 1].GetComponent<Image>().color = npc_color[(int)key_set[i]];
         }
+        StartCoroutine(InitPanelCorutine());
     }
 
     // Update is called once per frame
@@ -72,6 +79,13 @@ public class InputController : MonoBehaviour
                 KeyInput(4);
             }
         }
+    }
+
+    IEnumerator InitPanelCorutine()
+    {
+        yield return new WaitForSeconds(2f);
+        InitPanel.SetActive(false);
+        isgameover = false;
     }
 
     void KeyInput(int input)

@@ -41,9 +41,15 @@ public class GameOverUI : MonoBehaviour
         score_text.text = "score : " + final_socre.ToString();
     }
 
-    public void NextBtn()
+    public void RetryBtn()
     {
         scoreboard.SaveScore(final_socre, name_input.text);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void MainMenuBtn()
+    {
+        scoreboard.SaveScore(final_socre, name_input.text);
+        SceneManager.LoadScene("MainScene");
     }
 }
