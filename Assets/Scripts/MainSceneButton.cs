@@ -33,9 +33,16 @@ public class MainSceneButton : MonoBehaviour
     ScoreBoard scoreBoard = new ScoreBoard();
     DataList dataList = new DataList();
 
+    //옵션 패널
+    [SerializeField]
+    GameObject optionPanel;
+
+
     void Start()
     {
         scorePanel.SetActive(false);
+        optionPanel.SetActive(false);
+
         names = nameGroup.GetComponentsInChildren<TextMeshProUGUI>();
         scores = scoreGroup.GetComponentsInChildren<TextMeshProUGUI>();
         ranks = rankGroup.GetComponentsInChildren<TextMeshProUGUI>();
@@ -71,14 +78,25 @@ public class MainSceneButton : MonoBehaviour
         scorePanel.SetActive(true); //활성화
     }
 
-    //스코어보드 종료 버튼
-        public void OnClickCloseScoreBoard()
+    public void OnClickOption()
     {
-        Debug.Log("스코어보드 종료");
+        Debug.Log("옵션");
+
+        soundManager.PlayEffect(1); //소리
+        optionPanel.SetActive(true); //활성화
+    }
+
+    //닫기 버튼
+        public void OnClickClose()
+    {
+        Debug.Log("패널 닫");
 
         soundManager.PlayEffect(0); //소리
-        scorePanel.SetActive(false); //비활성화
+        scorePanel.SetActive(false); //스코어 패널 비활성화
+        optionPanel.SetActive(false); //옵션 패널 비활성화
     }
+
+
 
     //게임 종료 버튼
     public void OnClickExit()
@@ -93,13 +111,6 @@ public class MainSceneButton : MonoBehaviour
     void SetScoreBoard()
     {
         dataList = scoreBoard.LoadScore();
-
-        // for(int i =0; i<dataList.datas.Count; i++)
-        // {
-        //     Debug.Log(dataList.datas[i].name);
-        // }
-        // Debug.Log(names.Length);
-        // Debug.Log(scores.Length);
 
         //저장된 기록이 10개가 넘으면 for문을 10번까지, 그렇지 않으면 기록 수만큼 for문 반복
         int maxIndex;

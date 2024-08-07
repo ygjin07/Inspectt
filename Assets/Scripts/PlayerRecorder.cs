@@ -5,19 +5,25 @@ using System.IO;
 
 public class PlayerData
 {
-    int coin;
-    int life;
+    public int coin;
+    public int life;
+    public float bgmVolume;
+    public float effectVolume;
 
     public PlayerData()
     {
         coin =0;
         life =5;
+        bgmVolume =1;
+        effectVolume =1;
     }
 
-    public PlayerData(int coin, int life)
+    public PlayerData(int coin, int life, float bgm, float effect)
     {
         this.coin = coin;
         this.life = life;
+        this.bgmVolume = bgm;
+        this.effectVolume = effect;
     }
 }
 public class PlayerRecorder
@@ -36,9 +42,9 @@ public class PlayerRecorder
         }
     }
 
-    public void SavePlayerData(int coin, int life)
+    public void SavePlayerData(int coin, int life, float bgm, float effect)
     {
-        PlayerData playerData = new PlayerData(coin, life);
+        PlayerData playerData = new PlayerData(coin, life, bgm, effect);
         File.WriteAllText(Application.dataPath + "/PlayerData.json", JsonUtility.ToJson(playerData));
     }
     public PlayerData LoadPlayerData()
