@@ -32,6 +32,9 @@ public class InputController : MonoBehaviour
     public float limit_time = 8f;
     public float time;
 
+    CoinSaver coinsaver = new CoinSaver();
+    public int coin = 0;
+
     bool isgameover = true;
 
     //�Ƥп������� ������� S, F, J, L, Space, Space
@@ -46,6 +49,8 @@ public class InputController : MonoBehaviour
     void Start()
     {
         soundManager.PlayBGM(0,true);
+
+        coin = coinsaver.LoadCoin().coin;
 
         time = limit_time;
         init_checks = InitPanel.GetComponentsInChildren<Image>();
@@ -170,7 +175,8 @@ public class InputController : MonoBehaviour
 
             if (getcoin)
             {
-                Debug.Log("Coin");
+                coin++;
+                coinsaver.SaveCoin(coin);
                 return true;
             } 
         }
