@@ -19,6 +19,8 @@ public class UIManager : MonoBehaviour
     TextMeshProUGUI timeText;
     [SerializeField]
     TextMeshProUGUI scoreText;
+    [SerializeField]
+    TextMeshProUGUI coinText;
     //[SerializeField]
     //TextMeshProUGUI lifeText;
 
@@ -60,6 +62,7 @@ public class UIManager : MonoBehaviour
         timeSliderFill.color = Color.red * (1- timeSlider.value) + Color.green * timeSlider.value;
         timeText.text = textTime + "s"; //타이머 텍스트
         scoreText.text = "Score: " + inputController.score;
+        coinText.text = "Score: " + inputController.coin;
         //lifeText.text = "Life: " + inputController.life;
     }
 
