@@ -31,7 +31,15 @@ public class ScoreBoard
     
     public ScoreBoard()
     {
-        datas = LoadScore();
+        FileInfo fi = new FileInfo(Application.dataPath + "/TestJson.json");
+        if(!fi.Exists)
+        {
+            File.WriteAllText(Application.dataPath + "/TestJson.json", JsonUtility.ToJson(new DataList()));
+        }
+        else
+        {
+            datas = LoadScore();
+        }
     }
 
     public void SaveScore(int score, string name)
