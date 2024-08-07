@@ -12,6 +12,12 @@ public class NPCObject : MonoBehaviour
     Coroutine move_courutine;
     int move_stack = 0;
 
+
+
+    [SerializeField]
+    GameObject Coin;
+    bool is_coin = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +29,12 @@ public class NPCObject : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void SetCoin(bool coin)
+    {
+        is_coin = coin;
+        Coin.SetActive(coin);
     }
 
     public void StartMove()

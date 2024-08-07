@@ -124,8 +124,6 @@ public class InputController : MonoBehaviour
                 InputFail();
             }
 
-            Debug.Log("Score : " + score + ", Life : " + life);
-
             NextLine();
         }
     }
@@ -143,6 +141,33 @@ public class InputController : MonoBehaviour
     {
         List<NPCLine> npc_set = npc_controller.GetNpcSet();
         NPCType[] first_line = npc_set[0].GetNPCs();
+
+        if (npc_set[0].is_coinline)
+        {
+            NPCType[] first_coin_line = npc_set[0].GetCoinNPCs();
+
+            for (int i = 0; i < 4; i++)
+            {
+                if (input_set[i] == 4)
+                {
+                    //Space Ű ��
+                    if (first_coin_line[i] != key_set[4] && first_line[i] != key_set[5])
+                    {
+                        break;
+                    }
+                }
+                else
+                {
+                    if (first_coin_line[i] != key_set[input_set[i]])
+                    {
+                        break;
+                    }
+                }
+            }
+
+            Debug.Log("Coin");
+            return true;
+        }
 
         for (int i = 0; i< 4; i++)
         {
