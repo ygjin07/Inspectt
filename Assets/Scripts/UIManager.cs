@@ -27,12 +27,17 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     GameObject Life;
+    [SerializeField]
+    GameObject HeartPrefab;
 
-    public Image[] hearts;
+    public List<GameObject> hearts;
 
     void Awake()
     {
-        hearts = Life.GetComponentsInChildren<Image>();
+        for (int i = 0; i < inputController.life; i++)
+        {
+            hearts.Add(Instantiate(HeartPrefab, Life.transform));
+        }
         maxTime = inputController.limit_time;
         currentTime = inputController.time;
     }
