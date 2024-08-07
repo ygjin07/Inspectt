@@ -19,6 +19,8 @@ public class Store : MonoBehaviour
 
     [SerializeField]
     TMP_Text lifeCostText;
+    [SerializeField]
+    TMP_Text coinText;
 
     public int lifeCost;
     // Start is called before the first frame update
@@ -26,7 +28,8 @@ public class Store : MonoBehaviour
     {
         playerData = playerRecorder.LoadPlayerData();
         lifeCost =(int)Mathf.Pow(2,playerData.life-5);
-        lifeCostText.text = "Life Upgrade\n\n"+lifeCost + "Coin";
+        lifeCostText.text = lifeCost.ToString();
+        LoadCoin();
     }
 
     public void BuyDecreasingCharactorType()
@@ -38,8 +41,9 @@ public class Store : MonoBehaviour
             {
                 playerData.coin -= 5;
                 playerData.decreasingCharactorType = true;
-
+                LoadCoin();
                 soundManager.PlayEffect(2);
+                playerRecorder.SavePlayerData(playerData);
             }
 
             else
@@ -57,8 +61,10 @@ public class Store : MonoBehaviour
             playerData.coin -= lifeCost;
             playerData.life +=1;
             lifeCost *= 2;
-            lifeCostText.text = "Life Upgrade\n\n"+lifeCost + "Coin";
+            lifeCostText.text = lifeCost.ToString();
+            LoadCoin();
             soundManager.PlayEffect(2);
+            playerRecorder.SavePlayerData(playerData);
         }
 
         else
@@ -74,7 +80,9 @@ public class Store : MonoBehaviour
         {
             playerData.coin -= 100;
             playerData.unlockExtreme = true;
+            LoadCoin();
             soundManager.PlayEffect(2);
+            playerRecorder.SavePlayerData(playerData);
         }
 
         else
@@ -86,5 +94,10 @@ public class Store : MonoBehaviour
     public void BuyGamble()
     {
         
+    }
+
+    public void LoadCoin()
+    {
+        coinText.text = "x "+ playerData.coin;
     }
 }
