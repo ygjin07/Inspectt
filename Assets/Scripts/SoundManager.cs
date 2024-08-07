@@ -26,7 +26,9 @@ public class SoundManager : MonoBehaviour
 
     void OnDestroy()
     {
-        playerRecorder.SavePlayerData(playerData.coin,playerData.life,bgm.volume,effect.volume);
+        playerData.bgmVolume = bgm.volume;
+        playerData.effectVolume = effect.volume;
+        playerRecorder.SavePlayerData(playerData);
     }
     public void PlayBGM(int index, bool loop)
     {

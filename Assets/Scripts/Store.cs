@@ -13,19 +13,29 @@ public class Store : MonoBehaviour
         playerData = playerRecorder.LoadPlayerData();
     }
 
-    public void OnClickSomething1()
+    public void BuyDecreasingCharactorType()
     {
-
+        if(!playerData.decreasingCharactorType)
+        {
+            playerData.decreasingCharactorType = true;
+        }
     }
 
-    public void OnClickSomething2()
+    public void BuyLifeUpgrade()
     {
-
+        playerData.life +=1;
     }
 
-    public void OnClickSomething3()
+    public void BuyLevelUnlock()
     {
-
+        if(playerData.unlockLevel <2)
+        {
+            playerData.unlockLevel +=1;
+        }
     }
 
+    public void BuyGamble()
+    {
+        
+    }
 }

@@ -9,6 +9,8 @@ public class PlayerData
     public int life;
     public float bgmVolume;
     public float effectVolume;
+    public bool decreasingCharactorType;
+    public int unlockLevel;
 
     public PlayerData()
     {
@@ -18,12 +20,14 @@ public class PlayerData
         effectVolume =1;
     }
 
-    public PlayerData(int coin, int life, float bgm, float effect)
+    public PlayerData(int coin, int life, float bgm, float effect, bool dCT, int unlockLevel)
     {
         this.coin = coin;
         this.life = life;
         this.bgmVolume = bgm;
         this.effectVolume = effect;
+        this.decreasingCharactorType = dCT;
+        this.unlockLevel = unlockLevel;
     }
 }
 public class PlayerRecorder
@@ -41,10 +45,13 @@ public class PlayerRecorder
             playerData = LoadPlayerData();
         }
     }
-
-    public void SavePlayerData(int coin, int life, float bgm, float effect)
+    // public void SavePlayerData(int coin, int life, float bgm, float effect)
+    // {
+    //     PlayerData playerData = new PlayerData(coin, life, bgm, effect);
+    //     File.WriteAllText(Application.dataPath + "/PlayerData.json", JsonUtility.ToJson(playerData));
+    // }
+    public void SavePlayerData(PlayerData playerData)
     {
-        PlayerData playerData = new PlayerData(coin, life, bgm, effect);
         File.WriteAllText(Application.dataPath + "/PlayerData.json", JsonUtility.ToJson(playerData));
     }
     public PlayerData LoadPlayerData()
