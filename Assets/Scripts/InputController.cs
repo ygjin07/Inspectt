@@ -32,7 +32,7 @@ public class InputController : MonoBehaviour
     public float limit_time = 8f;
     public float time;
 
-    CoinSaver coinsaver = new CoinSaver();
+    PlayerRecorder player_data = new PlayerRecorder();
     public int coin = 0;
 
     bool isgameover = true;
@@ -50,7 +50,7 @@ public class InputController : MonoBehaviour
     {
         soundManager.PlayBGM(0,true);
 
-        coin = coinsaver.LoadCoin().coin;
+        coin = player_data.LoadPlayerData().coin;
 
         time = limit_time;
         init_checks = InitPanel.GetComponentsInChildren<Image>();
@@ -176,7 +176,9 @@ public class InputController : MonoBehaviour
             if (getcoin)
             {
                 coin++;
-                coinsaver.SaveCoin(coin);
+                PlayerData data = player_data.LoadPlayerData();
+                data.coin = coin;
+                player_data.SavePlayerData(data);
                 return true;
             } 
         }
