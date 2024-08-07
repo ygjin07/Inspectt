@@ -167,7 +167,6 @@ public class InputController : MonoBehaviour
     void InputFail()
     {
         life--;
-        limit_time -= 0.1f;
         uIManager.UnActiveHeart(life);
         if(life <= 0)
         {

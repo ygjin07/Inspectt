@@ -12,14 +12,16 @@ public class UIManager : MonoBehaviour
     InputController inputController;
     [SerializeField]
     Slider timeSlider;
+    [SerializeField]
+    Image timeSliderFill;
 
     [SerializeField]
     TextMeshProUGUI timeText;
     [SerializeField]
     TextMeshProUGUI scoreText;
-    [SerializeField]
+    //[SerializeField]
     //TextMeshProUGUI lifeText;
-    
+
     public float maxTime;
     public float currentTime;
     public float textTime;
@@ -55,6 +57,7 @@ public class UIManager : MonoBehaviour
         // Debug.Log("maxTime: "+maxTime);
         // Debug.Log("currentTime: "+currentTime);
         timeSlider.value = currentTime/maxTime; //타이머 바
+        timeSliderFill.color = Color.red * (1- timeSlider.value) + Color.green * timeSlider.value;
         timeText.text = textTime + "s"; //타이머 텍스트
         scoreText.text = "Score: " + inputController.score;
         //lifeText.text = "Life: " + inputController.life;
