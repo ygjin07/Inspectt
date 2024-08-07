@@ -17,9 +17,6 @@ public class InputController : MonoBehaviour
     Image[] init_checks;
 
     [SerializeField]
-    AudioSource lineClearSound;
-
-    [SerializeField]
     SoundManager soundManager;
     
 
@@ -65,6 +62,8 @@ public class InputController : MonoBehaviour
             time -= Time.deltaTime;
             if (time < 0)
             {
+                soundManager.PlayEffect(4);
+
                 InputFail();
                 NextLine();
             }
@@ -109,11 +108,12 @@ public class InputController : MonoBehaviour
         {
             if(CompareLine())
             {
-                lineClearSound.Play();
+                soundManager.PlayEffect(5);
                 InputSuccess();
             }
             else
             {
+                soundManager.PlayEffect(6);
                 InputFail();
             }
 
