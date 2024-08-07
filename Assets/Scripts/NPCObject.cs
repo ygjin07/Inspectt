@@ -5,13 +5,17 @@ using UnityEngine;
 public class NPCObject : MonoBehaviour
 {
     float Speed = 20f;
-    float destroy_ypos = -4.9f;
+    float destroy_ypos = -5f;
     float init_ypos = 7f;
+    float move_target;
     Animator animator;
+    Coroutine move_courutine;
+    int move_stack = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        move_target = transform.position.y;
         animator = gameObject.GetComponent<Animator>();
     }
 
@@ -21,24 +25,45 @@ public class NPCObject : MonoBehaviour
 
     }
 
+    public void StartMove()
+    {
+        if (move_courutine != null)
+        {
+            move_stack++;
+        }
+        else
+        {
+            move_courutine = StartCoroutine(Move());
+        }
+    }
+
     public IEnumerator Move()
     {
-        float move_target = transform.position.y - 2;
+        move_target -= 2;
 
         animator.SetBool("walk", true);
         while(transform.position.y > move_target)
         {
             transform.position += Vector3.down * Speed * Time.deltaTime;
-            if (transform.position.y < destroy_ypos)
-            {
-                transform.position = new Vector3(transform.position.x, init_ypos, transform.position.z);
-                yield break;
-            }
 
             yield return null;
         }
 
-        transform.position = new Vector3(transform.position.x, move_target, transform.position.z);
+        if (move_target <= destroy_ypos)
+        {
+            transform.position = new Vector3(transform.position.x, init_ypos, transform.position.z);
+            move_target = init_ypos;
+        }
+        else
+        {
+            transform.position = new Vector3(transform.position.x, move_target, transform.position.z);
+        }
         animator.SetBool("walk", false);
+        if(move_stack > 0)
+        {
+            move_stack--;
+            move_courutine = StartCoroutine(Move());
+        }
+        move_courutine = null;
     }
 }

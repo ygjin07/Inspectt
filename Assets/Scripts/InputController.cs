@@ -46,7 +46,7 @@ public class InputController : MonoBehaviour
         ShuffleArray(key_set);
         for (int i = 0; i < keyObjs.Count; i++)
         {
-            keyObjs[i].GetComponent<Animator>().runtimeAnimatorController = npc_controller.NPCAnimatorController[(int)key_set[i]];
+            keyObjs[i].GetComponentInChildren<Animator>().runtimeAnimatorController = npc_controller.NPCAnimatorController[(int)key_set[i]];
             init_checks[i + 1].GetComponent<Image>().sprite = npc_controller.NPCImages[(int)key_set[i]];
         }
         StartCoroutine(InitPanelCorutine());

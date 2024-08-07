@@ -109,7 +109,7 @@ public class NPCController : MonoBehaviour
     {
         foreach(NPCObject npc in NPCObjs)
         {
-            StartCoroutine(npc.Move());
+            npc.StartMove();
         }
     }
 }
