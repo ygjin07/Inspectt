@@ -101,7 +101,7 @@ public class NPCController : MonoBehaviour
                 NPCObjs[j * 4 + i].GetComponent<Animator>().runtimeAnimatorController = NPCAnimatorController[(int)type[i]];
             }
 
-            if (Random.Range(0, 2) == 1)
+            if (Random.Range(0, 8) == 1)
             {
                 int Random_coin = Random.Range(0, 4);
                 NPCObjs[j * 4 + Random_coin].SetCoin(true);

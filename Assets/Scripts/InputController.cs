@@ -145,6 +145,7 @@ public class InputController : MonoBehaviour
         if (npc_set[0].is_coinline)
         {
             NPCType[] first_coin_line = npc_set[0].GetCoinNPCs();
+            bool getcoin = true;
 
             for (int i = 0; i < 4; i++)
             {
@@ -153,6 +154,7 @@ public class InputController : MonoBehaviour
                     //Space Ű ��
                     if (first_coin_line[i] != key_set[4] && first_line[i] != key_set[5])
                     {
+                        getcoin = false;
                         break;
                     }
                 }
@@ -160,13 +162,17 @@ public class InputController : MonoBehaviour
                 {
                     if (first_coin_line[i] != key_set[input_set[i]])
                     {
+                        getcoin = false;
                         break;
                     }
                 }
             }
 
-            Debug.Log("Coin");
-            return true;
+            if (getcoin)
+            {
+                Debug.Log("Coin");
+                return true;
+            } 
         }
 
         for (int i = 0; i< 4; i++)
