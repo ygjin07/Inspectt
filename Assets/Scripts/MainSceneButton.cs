@@ -36,6 +36,9 @@ public class MainSceneButton : MonoBehaviour
     //옵션 패널
     [SerializeField]
     GameObject optionPanel;
+    //상점 패널
+    [SerializeField]
+    GameObject storePanel;
 
 
     void Start()
@@ -68,6 +71,14 @@ public class MainSceneButton : MonoBehaviour
         SceneManager.LoadScene("UITest");
     }
 
+    //상점 버튼
+    public void OnClickStore()
+    {
+        soundManager.PlayEffect(1); //소리
+
+        storePanel.SetActive(true); //활성화
+    }
+
     //스코어보드 버튼
     public void OnClickScoreBoard()
     {
@@ -75,9 +86,14 @@ public class MainSceneButton : MonoBehaviour
 
         SetScoreBoard(); //스코어보드 만들기
         soundManager.PlayEffect(1); //소리
+
         scorePanel.SetActive(true); //활성화
+
+        optionPanel.SetActive(false); //옵션 패널 비활성화
+        storePanel.SetActive(false); //상점 패널 비활성화
     }
 
+    //옵션 버튼
     public void OnClickOption()
     {
         Debug.Log("옵션");
@@ -89,11 +105,12 @@ public class MainSceneButton : MonoBehaviour
     //닫기 버튼
         public void OnClickClose()
     {
-        Debug.Log("패널 닫");
+        Debug.Log("패널 닫기");
 
         soundManager.PlayEffect(0); //소리
         scorePanel.SetActive(false); //스코어 패널 비활성화
         optionPanel.SetActive(false); //옵션 패널 비활성화
+        storePanel.SetActive(false); //스토어 패널 비활성화
     }
 
 

@@ -87,10 +87,4 @@ public class Store : MonoBehaviour
     {
         
     }
-
-    public void CloseStore()
-    {
-        soundManager.PlayEffect(0); //소리
-        storePanel.SetActive(false);
-    }
 }
