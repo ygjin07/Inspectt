@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6ca02b261158a0040b16078b4fa39675
+guid: de595d3babe73f943b851e6b4ef9ce63
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4369572136041557648
-    second: title_0
+      213: -5809056346502686517
+    second: Inspectation_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: title_0
+      name: Inspectation_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1882
-        height: 973
+        x: 143
+        y: 191
+        width: 146
+        height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,8 +127,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 09ea33de4b6d3ac30800000000000000
-      internalID: 4369572136041557648
+      spriteID: bc89a72d706126fa0800000000000000
+      internalID: -5809056346502686517
       vertices: []
       indices: 
       edges: []
