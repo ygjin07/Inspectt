@@ -38,10 +38,6 @@ public class UIManager : MonoBehaviour
 
     void Awake()
     {
-        for (int i = 0; i < inputController.life; i++)
-        {
-            hearts.Add(Instantiate(HeartPrefab, Life.transform));
-        }
         maxTime = inputController.limit_time;
         currentTime = inputController.time;
     }
@@ -62,12 +58,20 @@ public class UIManager : MonoBehaviour
         timeSliderFill.color = Color.red * (1- timeSlider.value) + Color.green * timeSlider.value;
         timeText.text = textTime + "s"; //타이머 텍스트
         scoreText.text = "Score: " + inputController.score;
-        coinText.text = "Score: " + inputController.coin;
+        coinText.text = "Coin: " + inputController.coin;
         //lifeText.text = "Life: " + inputController.life;
     }
 
     public void UnActiveHeart(int idx)
     {
         hearts[idx].gameObject.SetActive(false);
+    }
+
+    public void InitLife()
+    {
+        for (int i = 0; i < inputController.life; i++)
+        {
+            hearts.Add(Instantiate(HeartPrefab, Life.transform));
+        }
     }
 }

@@ -59,10 +59,11 @@ public class PlayerRecorder
         FileInfo fi = new FileInfo(Application.dataPath + "/PlayerData.json");
         if(!fi.Exists)
         {
-            playerData = new PlayerData();
-            File.WriteAllText(Application.dataPath + "/PlayerData.json", JsonUtility.ToJson(playerData));
+            File.WriteAllText(Application.dataPath + "/PlayerData.json", JsonUtility.ToJson(new PlayerData()));
         }
-
-        return playerData;
+        string str = File.ReadAllText(Application.dataPath + "/PlayerData.json");
+        PlayerData data = JsonUtility.FromJson<PlayerData>(str);
+        playerData = data;
+        return playerData;  
     }
 }

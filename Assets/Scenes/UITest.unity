@@ -1594,7 +1594,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 142.42932, w: -0.9558716}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &503607264
@@ -3475,7 +3475,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 142.42932, w: -0.9558716}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &989866173
@@ -4138,7 +4138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1145779211
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8891,7 +8891,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 142.42932, w: -0.9558716}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1575299724
@@ -9997,7 +9997,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 142.42932, w: -0.9558716}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1918944527

@@ -51,6 +51,8 @@ public class InputController : MonoBehaviour
         soundManager.PlayBGM(0,true);
 
         coin = player_data.LoadPlayerData().coin;
+        life = player_data.LoadPlayerData().life;
+        uIManager.InitLife();
 
         time = limit_time;
         init_checks = InitPanel.GetComponentsInChildren<Image>();

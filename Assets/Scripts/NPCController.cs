@@ -98,10 +98,11 @@ public class NPCController : MonoBehaviour
             {
                 NPCType[] type = npc_set[j].GetNPCs();
                 NPCObjs[j * 4 + i].GetComponent<SpriteRenderer>().sprite = NPCImages[(int)type[i]];
+                NPCObjs[j * 4 + i].GetComponent<SpriteRenderer>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1);
                 NPCObjs[j * 4 + i].GetComponent<Animator>().runtimeAnimatorController = NPCAnimatorController[(int)type[i]];
             }
 
-            if (Random.Range(0, 8) == 1)
+            if (Random.Range(0, 2) == 1)
             {
                 int Random_coin = Random.Range(0, 4);
                 NPCObjs[j * 4 + Random_coin].SetCoin(true);
@@ -121,10 +122,11 @@ public class NPCController : MonoBehaviour
         {
             NPCObjs[last_npc_idx + i].SetCoin(false);
             NPCObjs[last_npc_idx + i].GetComponent<SpriteRenderer>().sprite = NPCImages[(int)type[i % 4]];
+            NPCObjs[last_npc_idx + i].GetComponent<SpriteRenderer>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1);
             NPCObjs[last_npc_idx + i].GetComponent<Animator>().runtimeAnimatorController = NPCAnimatorController[(int)type[i % 4]];
         }
 
-        if (Random.Range(0, 8) == 1)
+        if (Random.Range(0, 2) == 1)
         {
             int Random_coin = Random.Range(0, 4);
             NPCObjs[last_npc_idx + Random_coin].SetCoin(true);
