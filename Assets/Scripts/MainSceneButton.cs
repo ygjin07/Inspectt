@@ -68,7 +68,14 @@ public class MainSceneButton : MonoBehaviour
         Debug.Log("시작");
 
         soundManager.PlayEffect(0);
-        SceneManager.LoadScene("UITest");
+        if (optionPanel.GetComponent<OptionPanel>().GetTutorialState())
+        {
+            SceneManager.LoadScene("TutorialScene");
+        }
+        else
+        {
+            SceneManager.LoadScene("UITest");
+        }
     }
 
     //상점 버튼

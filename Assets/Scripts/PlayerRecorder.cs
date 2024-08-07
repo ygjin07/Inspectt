@@ -11,6 +11,7 @@ public class PlayerData
     public float effectVolume;
     public bool decreasingCharactorType;
     public bool unlockExtreme;
+    public bool Tutorial;
 
     public PlayerData()
     {
@@ -20,9 +21,10 @@ public class PlayerData
         effectVolume =1;
         decreasingCharactorType = false;
         unlockExtreme = false;
+        Tutorial = false;
     }
 
-    public PlayerData(int coin, int life, float bgm, float effect, bool dCT, bool unlockExtreme)
+    public PlayerData(int coin, int life, float bgm, float effect, bool dCT, bool unlockExtreme, bool tuto)
     {
         this.coin = coin;
         this.life = life;
@@ -30,6 +32,7 @@ public class PlayerData
         this.effectVolume = effect;
         this.decreasingCharactorType = dCT;
         this.unlockExtreme = unlockExtreme;
+        Tutorial = tuto;
     }
 }
 public class PlayerRecorder

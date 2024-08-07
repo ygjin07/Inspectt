@@ -2,9 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 public class Store : MonoBehaviour
 {
@@ -93,7 +95,18 @@ public class Store : MonoBehaviour
 
     public void BuyGamble()
     {
-        
+        if (!playerData.unlockExtreme && playerData.coin >= 3)
+        {
+            playerData.coin -= 3;
+        playerData.coin += Random.Range(0, 6);
+        LoadCoin();
+        soundManager.PlayEffect(2);
+        playerRecorder.SavePlayerData(playerData);
+        }
+        else
+        {
+            soundManager.PlayEffect(3);
+        }
     }
 
     public void LoadCoin()

@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UITest.unity
     guid: 39c366160489f574b82968694ee464c5
+  - enabled: 1
+    path: Assets/Scenes/TutorialScene.unity
+    guid: 60097bd2cf40b674ab30875f9a35c23f
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
