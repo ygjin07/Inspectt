@@ -159,7 +159,7 @@ public class InputController : MonoBehaviour
                 if (input_set[i] == 4)
                 {
                     //Space Ű ��
-                    if (first_coin_line[i] != key_set[4] && first_line[i] != key_set[5])
+                    if (first_coin_line[i] != key_set[4] && first_coin_line[i] != key_set[5])
                     {
                         getcoin = false;
                         break;
