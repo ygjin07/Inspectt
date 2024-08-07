@@ -7,6 +7,10 @@ using UnityEngine.SceneManagement;
 
 public class MainSceneButton : MonoBehaviour
 {
+    //배경음악, 버튼 소리
+    [SerializeField]
+    SoundManager soundManager;
+
     [SerializeField]
     GameObject scorePanel;
 
@@ -36,6 +40,8 @@ public class MainSceneButton : MonoBehaviour
         scores = scoreGroup.GetComponentsInChildren<TextMeshProUGUI>();
         ranks = rankGroup.GetComponentsInChildren<TextMeshProUGUI>();
 
+        //메인씬 배경음악 반복재생
+        soundManager.PlayBGM(0,true);
     }
 
     void Update()
@@ -50,6 +56,8 @@ public class MainSceneButton : MonoBehaviour
     public void OnClickStart()
     {
         Debug.Log("시작");
+
+        soundManager.PlayEffect(0);
         SceneManager.LoadScene("UITest");
     }
 
@@ -57,21 +65,27 @@ public class MainSceneButton : MonoBehaviour
     public void OnClickScoreBoard()
     {
         Debug.Log("스코어보드");
-        SetScoreBoard();
-        scorePanel.SetActive(true);
+
+        SetScoreBoard(); //스코어보드 만들기
+        soundManager.PlayEffect(1); //소리
+        scorePanel.SetActive(true); //활성화
     }
 
     //스코어보드 종료 버튼
         public void OnClickCloseScoreBoard()
     {
         Debug.Log("스코어보드 종료");
-        scorePanel.SetActive(false);
+
+        soundManager.PlayEffect(0); //소리
+        scorePanel.SetActive(false); //비활성화
     }
 
     //게임 종료 버튼
     public void OnClickExit()
     {
         Debug.Log("종료");
+
+        soundManager.PlayEffect(0);//소리
         UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
     }
