@@ -209,7 +209,9 @@ public class InputController : MonoBehaviour
 
     void ShuffleArray<T>(T[] array)
     {
-        for (int i = array.Length - 1; i > 0; i--)
+        PlayerData data = player_data.LoadPlayerData();
+
+        for (int i = array.Length - (data.decreasingCharactorType ? 2 : 1); i > 0; i--)
         {
             int randomIndex = Random.Range(0, i + 1);
 

@@ -9,11 +9,14 @@ public class NPCLine
 {
     NPCType[] npcs = new NPCType[4];
     NPCType[] coin_npcs = new NPCType[4];
+    bool chatDecreased = false;
 
     public bool is_coinline = false;
 
-    public NPCLine() 
+    public NPCLine(bool cd)
     {
+        chatDecreased = cd;
+
         npcs[0] = GetRandomNPCType();
         npcs[1] = GetRandomNPCType();
         npcs[2] = GetRandomNPCType();
@@ -51,7 +54,7 @@ public class NPCLine
     {
         NPCType[] type = (NPCType[])System.Enum.GetValues(typeof(NPCType));
 
-        int randomIndex = Random.Range(0, type.Length);
+        int randomIndex = Random.Range(0, type.Length - (chatDecreased ? 1 : 0));
 
         return type[randomIndex];
     }
@@ -70,6 +73,9 @@ public class NPCController : MonoBehaviour
     public List<Sprite> NPCImages;
     public List<RuntimeAnimatorController> NPCAnimatorController;
 
+    PlayerRecorder player_data = new PlayerRecorder();
+    PlayerData pData;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -84,13 +90,15 @@ public class NPCController : MonoBehaviour
 
     void Init()
     {
+        pData = player_data.LoadPlayerData();
+
         NPCObjs = NPCsGameObject.GetComponentsInChildren<NPCObject>();
 
-        npc_set.Add(new NPCLine());
-        npc_set.Add(new NPCLine());
-        npc_set.Add(new NPCLine());
-        npc_set.Add(new NPCLine());
-        npc_set.Add(new NPCLine());
+        npc_set.Add(new NPCLine(pData.decreasingCharactorType));
+        npc_set.Add(new NPCLine(pData.decreasingCharactorType));
+        npc_set.Add(new NPCLine(pData.decreasingCharactorType));
+        npc_set.Add(new NPCLine(pData.decreasingCharactorType));
+        npc_set.Add(new NPCLine(pData.decreasingCharactorType));
 
         for(int j = 0; j<NPCObjs.Length / 4 - 1; j++)
         {
@@ -98,7 +106,10 @@ public class NPCController : MonoBehaviour
             {
                 NPCType[] type = npc_set[j].GetNPCs();
                 NPCObjs[j * 4 + i].GetComponent<SpriteRenderer>().sprite = NPCImages[(int)type[i]];
-                NPCObjs[j * 4 + i].GetComponent<SpriteRenderer>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1);
+                if (pData.unlockExtreme)
+                {
+                    NPCObjs[j * 4 + i].GetComponent<SpriteRenderer>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1);
+                }
                 NPCObjs[j * 4 + i].GetComponent<Animator>().runtimeAnimatorController = NPCAnimatorController[(int)type[i]];
             }
 
@@ -113,7 +124,7 @@ public class NPCController : MonoBehaviour
 
     public void AddLine()
     {
-        npc_set.Add(new NPCLine());
+        npc_set.Add(new NPCLine(pData.decreasingCharactorType));
 
         NPCType[] type = npc_set[npc_set.Count - 1].GetNPCs();
 
@@ -122,7 +133,10 @@ public class NPCController : MonoBehaviour
         {
             NPCObjs[last_npc_idx + i].SetCoin(false);
             NPCObjs[last_npc_idx + i].GetComponent<SpriteRenderer>().sprite = NPCImages[(int)type[i % 4]];
-            NPCObjs[last_npc_idx + i].GetComponent<SpriteRenderer>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1);
+            if (pData.unlockExtreme)
+            {
+                NPCObjs[last_npc_idx + i].GetComponent<SpriteRenderer>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1);
+            }
             NPCObjs[last_npc_idx + i].GetComponent<Animator>().runtimeAnimatorController = NPCAnimatorController[(int)type[i % 4]];
         }
 
