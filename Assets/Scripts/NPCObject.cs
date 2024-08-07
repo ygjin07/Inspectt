@@ -5,8 +5,8 @@ using UnityEngine;
 public class NPCObject : MonoBehaviour
 {
     float Speed = 20f;
-    float destroy_ypos = -5f;
-    float init_ypos = 7f;
+    float destroy_ypos = -3f;
+    float init_ypos = 9f;
     float move_target;
     Animator animator;
     Coroutine move_courutine;

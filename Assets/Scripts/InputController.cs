@@ -18,7 +18,11 @@ public class InputController : MonoBehaviour
 
     [SerializeField]
     SoundManager soundManager;
-    
+
+    [SerializeField]
+    GameObject checkpointGameObjects;
+
+    Checkpoint[] checkpoints;
 
     List<int> input_set = new List<int>();
     public int score = 0;
@@ -34,7 +38,7 @@ public class InputController : MonoBehaviour
     NPCType[] key_set = (NPCType[])System.Enum.GetValues(typeof(NPCType));
 
     [SerializeField]
-    List<GameObject> keyObjs;
+    List<Image> keyObjs;
 
     Color[] npc_color = { Color.red, Color.blue, Color.yellow, Color.green, Color.white, Color.black };
 
@@ -45,10 +49,12 @@ public class InputController : MonoBehaviour
 
         time = limit_time;
         init_checks = InitPanel.GetComponentsInChildren<Image>();
+        checkpoints = checkpointGameObjects.GetComponentsInChildren<Checkpoint>();
+
         ShuffleArray(key_set);
         for (int i = 0; i < keyObjs.Count; i++)
         {
-            keyObjs[i].GetComponentInChildren<Animator>().runtimeAnimatorController = npc_controller.NPCAnimatorController[(int)key_set[i]];
+            keyObjs[i].sprite = npc_controller.NPCImages[(int)key_set[i]];
             init_checks[i + 1].GetComponent<Image>().sprite = npc_controller.NPCImages[(int)key_set[i]];
         }
         StartCoroutine(InitPanelCorutine());
@@ -103,6 +109,7 @@ public class InputController : MonoBehaviour
         input_set.Add(input);
 
         soundManager.PlayEffect(input_set.Count-1);
+        checkpoints[input_set.Count - 1].GetInput();
 
         if(input_set.Count >= 4)
         {
