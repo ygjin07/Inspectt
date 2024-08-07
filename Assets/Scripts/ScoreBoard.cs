@@ -55,6 +55,11 @@ public class ScoreBoard
 
     public DataList LoadScore()
     {
+        FileInfo fi = new FileInfo(Application.dataPath + "/TestJson.json");
+        if(!fi.Exists)
+        {
+            File.WriteAllText(Application.dataPath + "/TestJson.json", JsonUtility.ToJson(new DataList()));
+        }
         string str = File.ReadAllText(Application.dataPath + "/TestJson.json");
         DataList datas = JsonUtility.FromJson<DataList>(str);
         return datas;

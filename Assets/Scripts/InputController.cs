@@ -18,6 +18,9 @@ public class InputController : MonoBehaviour
 
     [SerializeField]
     AudioSource lineClearSound;
+
+    [SerializeField]
+    SoundManager soundManager;
     
 
     List<int> input_set = new List<int>();
@@ -41,6 +44,8 @@ public class InputController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        soundManager.PlayBGM(0,true);
+
         time = limit_time;
         init_checks = InitPanel.GetComponentsInChildren<Image>();
         ShuffleArray(key_set);
@@ -97,6 +102,8 @@ public class InputController : MonoBehaviour
     void KeyInput(int input)
     {
         input_set.Add(input);
+
+        soundManager.PlayEffect(input_set.Count-1);
 
         if(input_set.Count >= 4)
         {
