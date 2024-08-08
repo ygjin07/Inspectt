@@ -242,5 +242,8 @@ public class InputController : MonoBehaviour
         isgameover = true;
         gameOverUI.ActiveGameOverPanel();
         gameOverUI.SetFinalScore(score);
+        PlayerData pdata = player_data.LoadPlayerData();
+        pdata.decreasingCharactorType = false;
+        player_data.SavePlayerData(pdata);
     }
 }

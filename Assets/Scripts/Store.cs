@@ -111,6 +111,7 @@ public class Store : MonoBehaviour
 
     public void LoadCoin()
     {
+        playerData = playerRecorder.LoadPlayerData();
         coinText.text = "x "+ playerData.coin;
     }
 }

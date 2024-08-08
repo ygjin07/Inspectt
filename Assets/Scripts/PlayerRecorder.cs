@@ -21,7 +21,7 @@ public class PlayerData
         effectVolume =1;
         decreasingCharactorType = false;
         unlockExtreme = false;
-        Tutorial = false;
+        Tutorial = true;
     }
 
     public PlayerData(int coin, int life, float bgm, float effect, bool dCT, bool unlockExtreme, bool tuto)

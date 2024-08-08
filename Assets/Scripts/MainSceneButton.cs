@@ -128,7 +128,7 @@ public class MainSceneButton : MonoBehaviour
         Debug.Log("종료");
 
         soundManager.PlayEffect(0);//소리
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
     }
 
