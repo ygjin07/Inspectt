@@ -6,7 +6,7 @@ public class CoinCheat : MonoBehaviour
 {
     PlayerData playerData;
     PlayerRecorder playerRecorder = new PlayerRecorder();
-    bool readyrefresh = false;
+    bool readyrefresh = false, cheat_coin = false;
 
     // Start is called before the first frame update
     void Start()
@@ -25,13 +25,22 @@ public class CoinCheat : MonoBehaviour
         {
             readyrefresh = false;
         }
+        
+        if(Input.GetKeyDown(KeyCode.C) && cheat_coin)
+        {
+            playerData = playerRecorder.LoadPlayerData();
+            playerData.coin += 10;
+            playerRecorder.SavePlayerData(playerData);
+        }
+        else if (Input.GetMouseButtonDown(0))
+        {
+            cheat_coin = false;
+        }
     }
 
     public void AddCoin()
     {
-        playerData = playerRecorder.LoadPlayerData();
-        playerData.coin += 10;
-        playerRecorder.SavePlayerData(playerData);
+        cheat_coin = true;
     }
 
     public void refresh()

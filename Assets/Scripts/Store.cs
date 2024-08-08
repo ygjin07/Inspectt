@@ -43,9 +43,9 @@ public class Store : MonoBehaviour
             {
                 playerData.coin -= 5;
                 playerData.decreasingCharactorType = true;
-                LoadCoin();
                 soundManager.PlayEffect(2);
                 playerRecorder.SavePlayerData(playerData);
+                LoadCoin();
             }
 
             else
@@ -64,9 +64,9 @@ public class Store : MonoBehaviour
             playerData.life +=1;
             lifeCost *= 2;
             lifeCostText.text = lifeCost.ToString();
-            LoadCoin();
             soundManager.PlayEffect(2);
             playerRecorder.SavePlayerData(playerData);
+            LoadCoin();
         }
 
         else
@@ -82,9 +82,9 @@ public class Store : MonoBehaviour
         {
             playerData.coin -= 100;
             playerData.unlockExtreme = true;
-            LoadCoin();
             soundManager.PlayEffect(2);
             playerRecorder.SavePlayerData(playerData);
+            LoadCoin();
         }
 
         else
@@ -99,9 +99,9 @@ public class Store : MonoBehaviour
         {
             playerData.coin -= 3;
         playerData.coin += Random.Range(0, 6);
-        LoadCoin();
         soundManager.PlayEffect(2);
         playerRecorder.SavePlayerData(playerData);
+        LoadCoin();
         }
         else
         {
