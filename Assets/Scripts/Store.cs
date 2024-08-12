@@ -95,7 +95,7 @@ public class Store : MonoBehaviour
 
     public void BuyGamble()
     {
-        if (!playerData.unlockExtreme && playerData.coin >= 3)
+        if (playerData.coin >= 3)
         {
             playerData.coin -= 3;
         playerData.coin += Random.Range(0, 6);
