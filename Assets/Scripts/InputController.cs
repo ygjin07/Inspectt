@@ -106,9 +106,12 @@ public class InputController : MonoBehaviour
 
     IEnumerator InitPanelCorutine()
     {
-        yield return new WaitForSeconds(2f);
+        Debug.Log("이닛패널코루틴 시작");
+        // yield return new WaitForSeconds(2f);
+        yield return new WaitForSecondsRealtime(2f);
         InitPanel.SetActive(false);
         isgameover = false;
+        Debug.Log("이닛패널코루틴 끝");
     }
 
     void KeyInput(int input)

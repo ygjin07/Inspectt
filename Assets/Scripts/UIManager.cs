@@ -24,6 +24,13 @@ public class UIManager : MonoBehaviour
     //[SerializeField]
     //TextMeshProUGUI lifeText;
 
+    //Hotfix_esc
+    [SerializeField]
+    GameObject pausedPanel;
+    bool isPaused;
+    [SerializeField]
+    SoundManager soundManager;
+
     public float maxTime;
     public float currentTime;
     public float textTime;
@@ -40,6 +47,9 @@ public class UIManager : MonoBehaviour
     {
         maxTime = inputController.limit_time;
         currentTime = inputController.time;
+
+        pausedPanel.SetActive(false);
+        isPaused = false;
     }
 
     //test
@@ -48,6 +58,17 @@ public class UIManager : MonoBehaviour
         maxTime = inputController.limit_time;
         currentTime = inputController.time;
         textTime = Mathf.Floor(currentTime*100f)/100f;
+
+        if(!isPaused && Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("퍼즈1");
+            OnClickPaused();
+        }
+        else if(isPaused && Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("퍼즈2");
+            OnClickResume();
+        }
     }
 
     void LateUpdate()
@@ -74,4 +95,22 @@ public class UIManager : MonoBehaviour
             hearts.Add(Instantiate(HeartPrefab, Life.transform));
         }
     }
+
+    public void OnClickPaused()
+    {
+        Time.timeScale = 0f;
+        isPaused = true;
+        pausedPanel.SetActive(true);
+        soundManager.bgm.Pause();
+        pausedPanel.SetActive(true);
+	}
+    
+    public void OnClickResume()
+    {
+    	Time.timeScale = 1f;
+        isPaused = false;
+        pausedPanel.SetActive(false);
+        soundManager.bgm.UnPause();
+    	pausedPanel.SetActive(false);
+	}
 }
