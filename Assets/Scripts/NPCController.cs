@@ -106,7 +106,7 @@ public class NPCController : MonoBehaviour
             {
                 NPCType[] type = npc_set[j].GetNPCs();
                 NPCObjs[j * 4 + i].GetComponent<SpriteRenderer>().sprite = NPCImages[(int)type[i]];
-                if (pData.unlockExtreme)
+                if (pData.ExtremeOnOff)
                 {
                     NPCObjs[j * 4 + i].GetComponent<SpriteRenderer>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1);
                 }
@@ -133,7 +133,7 @@ public class NPCController : MonoBehaviour
         {
             NPCObjs[last_npc_idx + i].SetCoin(false);
             NPCObjs[last_npc_idx + i].GetComponent<SpriteRenderer>().sprite = NPCImages[(int)type[i % 4]];
-            if (pData.unlockExtreme)
+            if (pData.ExtremeOnOff)
             {
                 NPCObjs[last_npc_idx + i].GetComponent<SpriteRenderer>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1);
             }

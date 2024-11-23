@@ -107,6 +107,7 @@ public class MainSceneButton : MonoBehaviour
 
         soundManager.PlayEffect(1); //소리
         optionPanel.SetActive(true); //활성화
+        optionPanel.GetComponent<OptionPanel>().OpenOption();
     }
 
     //닫기 버튼

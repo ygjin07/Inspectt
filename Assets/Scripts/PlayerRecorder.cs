@@ -12,6 +12,7 @@ public class PlayerData
     public bool decreasingCharactorType;
     public bool unlockExtreme;
     public bool Tutorial;
+    public bool ExtremeOnOff;
 
     public PlayerData()
     {
@@ -22,9 +23,10 @@ public class PlayerData
         decreasingCharactorType = false;
         unlockExtreme = false;
         Tutorial = true;
+        ExtremeOnOff = false;
     }
 
-    public PlayerData(int coin, int life, float bgm, float effect, bool dCT, bool unlockExtreme, bool tuto)
+    public PlayerData(int coin, int life, float bgm, float effect, bool dCT, bool unlockExtreme, bool tuto, bool exOnoff)
     {
         this.coin = coin;
         this.life = life;
@@ -33,6 +35,7 @@ public class PlayerData
         this.decreasingCharactorType = dCT;
         this.unlockExtreme = unlockExtreme;
         Tutorial = tuto;
+        ExtremeOnOff = unlockExtreme ? exOnoff : false;
     }
 }
 public class PlayerRecorder
