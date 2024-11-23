@@ -48,6 +48,7 @@ public class UIManager : MonoBehaviour
         maxTime = inputController.limit_time;
         currentTime = inputController.time;
 
+        Time.timeScale = 1f;
         pausedPanel.SetActive(false);
         isPaused = false;
     }
